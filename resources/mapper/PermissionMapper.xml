@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.backend.mapper.PermissionMapper">
+    <select id="selectPermissionsByRoleId" resultType="com.mall.backend.model.entity.Permission">
+        SELECT p.*
+        FROM sys_permission p
+                 JOIN role_permission rp ON p.id = rp.permission_id
+        WHERE rp.role_id = #{roleId}
+    </select>
+</mapper>
